@@ -3,7 +3,7 @@ CREATE TABLE TABELA_PRODUTOS (
     nome VARCHAR(50),
     preco DECIMAL(10, 2),
     estoque INT,
-    perecivel VARCHAR(3),
+    perecivel VARCHAR(50),
     marca VARCHAR(50),
     nacionalidade VARCHAR(50)
 );
