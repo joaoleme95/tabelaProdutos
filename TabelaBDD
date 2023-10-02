@@ -1,0 +1,59 @@
+CREATE TABLE TABELA_PRODUTOS (
+    id_produto INT PRIMARY KEY,
+    nome VARCHAR(50),
+    preco DECIMAL(10, 2),
+    estoque INT,
+    perecivel VARCHAR(3),
+    marca VARCHAR(50),
+    nacionalidade VARCHAR(50)
+);
+
+-- Inserção de dados na tabela "TABELA_PRODUTOS"
+INSERT INTO TABELA_PRODUTOS (id_produto, nome, preco, estoque, perecivel, marca, nacionalidade)
+VALUES (1, 'Arroz', 11.00, 55, 'não', 'Sao Joao', 'Brasileiro');
+INSERT INTO TABELA_PRODUTOS (id_produto, nome, preco, estoque, perecivel, marca, nacionalidade)
+VALUES (2, 'Feijao', 8.00, 60, 'nao', 'Sao Joao', 'Brasileiro');
+INSERT INTO TABELA_PRODUTOS (id_produto, nome, preco, estoque, perecivel, marca, nacionalidade)
+VALUES (3, 'Laka', 5.00, 25, 'sim', 'Nestle', 'Inglesa');
+INSERT INTO TABELA_PRODUTOS (id_produto, nome, preco, estoque, perecivel, marca, nacionalidade)
+VALUES (4, 'Suflair', 5.00, 27, 'sim', 'Nestle', 'Inglesa');
+INSERT INTO TABELA_PRODUTOS (id_produto, nome, preco, estoque, perecivel, marca, nacionalidade)
+VALUES (5, 'Trakinas', 4.00, 30, 'sim', 'Kibom', 'Brasileiro');
+
+-- Seleção de todos os registros na tabela "TABELA_PRODUTOS"
+SELECT * FROM TABELA_PRODUTOS;
+
+-- Contagem de registros na tabela "TABELA_PRODUTOS" e atribuição a uma coluna nomeada "total_produtos"
+SELECT COUNT(*) AS total_produtos FROM TABELA_PRODUTOS;
+
+-- Cálculo da média de preços dos produtos e atribuição a uma coluna nomeada "preco_medio"
+SELECT AVG(preco) AS preco_medio FROM TABELA_PRODUTOS;
+
+-- Cálculo da média de preços dos produtos agrupados por "perecivel"
+SELECT perecivel, AVG(preco) AS preco_medio
+FROM TABELA_PRODUTOS
+GROUP BY perecivel;
+
+-- Cálculo da média de preços dos produtos agrupados por "nome"
+SELECT nome, AVG(preco) AS preco_medio
+FROM TABELA_PRODUTOS
+GROUP BY nome;
+
+-- Cálculo da média de preços e soma do estoque de todos os produtos
+SELECT AVG(preco) AS preco_medio, SUM(estoque) AS total_estoque
+FROM TABELA_PRODUTOS;
+
+-- Seleção de produtos com o preço máximo
+SELECT nome, marca, estoque
+FROM TABELA_PRODUTOS
+WHERE preco = (SELECT MAX(preco) FROM TABELA_PRODUTOS);
+
+-- Seleção de produtos com preço superior à média de preços de todos os produtos
+SELECT *
+FROM TABELA_PRODUTOS
+WHERE preco > (SELECT AVG(preco) FROM TABELA_PRODUTOS);
+
+-- Contagem de produtos por nacionalidade
+SELECT nacionalidade, COUNT(*) AS quantidade
+FROM TABELA_PRODUTOS
+GROUP BY nacionalidade;
