@@ -1,3 +1,6 @@
+![Print Oracle](TABLE_PRODUCT.png)
+
+
 # Projeto de Gerenciamento de Produtos - SQL
 
 Este repositório contém um projeto de gerenciamento de produtos usando SQL. O projeto inclui uma série de operações SQL para criar uma tabela de produtos, inserir dados nessa tabela e realizar consultas para obter informações relevantes sobre os produtos.
